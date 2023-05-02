@@ -17,9 +17,6 @@ if platform.system() == "Windows":
 def is_valid_username(username):
     if not re.match("^[a-zA-Z0-9_]{3,20}$", username):
         return False
-    reserved_usernames = ["admin", "administrator", "moderator", "mod", "support", "settings"]
-    if username.lower() in reserved_usernames:
-        return False
     response = requests.get(f"https://spacehey.com/{username}")
     return response.status_code == 404
 
